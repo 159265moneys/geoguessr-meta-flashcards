@@ -58,6 +58,27 @@
     return covSet.has(covNorm(COV_ALIAS[c] || c));
   }
 
+  // ---- 紛らわしい国旗（正解画面の付加情報） ----
+  const FLAG_SIMILAR = window.GEOQUIZ_FLAG_SIMILAR || null;
+  const flagJaByCode = (function () {
+    const m = {};
+    allCards.forEach((c) => {
+      const mm = c.category === 'flag' && c.id && c.id.match(/^flag_([a-z]{2})$/);
+      if (mm) m[mm[1]] = c.answer_country_ja || c.answer_country;
+    });
+    return m;
+  })();
+  function flagCodeOf(card) {
+    const mm = card.id && card.id.match(/^flag_([a-z]{2})$/);
+    return mm ? mm[1] : null;
+  }
+  function similarGroupFor(card) {
+    if (!FLAG_SIMILAR || !Array.isArray(FLAG_SIMILAR.groups)) return null;
+    const code = flagCodeOf(card);
+    if (!code) return null;
+    return FLAG_SIMILAR.groups.find((g) => Array.isArray(g.codes) && g.codes.includes(code)) || null;
+  }
+
   // ---- localStorage ----
   function readJSON(key) {
     try { return JSON.parse(localStorage.getItem(key)) || null; } catch (e) { return null; }
@@ -150,6 +171,9 @@
     fbResult: $('fb-result'),
     fbMeta: $('fb-meta'),
     fbChips: $('fb-chips'),
+    fbSimilar: $('fb-similar'),
+    fbSimilarFlags: $('fb-similar-flags'),
+    fbSimilarNote: $('fb-similar-note'),
     fbSource: $('fb-source'),
     nextBtn: $('next-btn'),
     menuBtn: $('menu-btn'),
@@ -272,9 +296,15 @@
       : `✗ 不正解 — 正解: ${current.answer_country_ja || current.answer_country}`;
 
     if (current.meta_text && current.meta_text.trim()) {
+      els.fbMeta.style.display = '';
       els.fbMeta.className = 'fb-meta';
       els.fbMeta.textContent = current.meta_text.trim();
+    } else if (current.category === 'flag') {
+      // 国旗は解説テキストを持たない設計（似ている国旗セクションが学習を担う）
+      els.fbMeta.style.display = 'none';
+      els.fbMeta.textContent = '';
     } else {
+      els.fbMeta.style.display = '';
       els.fbMeta.className = 'fb-meta empty';
       els.fbMeta.textContent = '（解説は未登録。監査ビューで後から追記できます）';
     }
@@ -284,6 +314,8 @@
     if (current.region) chips.push(current.region);
     els.fbChips.innerHTML = chips.map((c) => `<span class="chip">${c}</span>`).join('')
       + (covSet && !isInCoverage(current) ? '<span class="chip out">ジオゲッサ圏外（SV非対応）</span>' : '');
+
+    renderSimilar(current);
 
     if (current.source_url) {
       els.fbSource.hidden = false;
@@ -295,6 +327,22 @@
 
     els.feedback.hidden = false;
     els.nextBtn.focus();
+  }
+
+  function renderSimilar(card) {
+    const g = similarGroupFor(card);
+    if (!g) { els.fbSimilar.hidden = true; return; }
+    const curCode = flagCodeOf(card);
+    let codes = g.codes.slice().sort((a, b) => (a === curCode ? -1 : b === curCode ? 1 : 0)).slice(0, 6);
+    els.fbSimilarFlags.innerHTML = codes.map((code) => {
+      const ja = flagJaByCode[code] || code.toUpperCase();
+      const cur = code === curCode;
+      return `<figure class="${cur ? 'is-current' : ''}">`
+        + `<img loading="lazy" src="https://flagcdn.com/w160/${code}.png" alt="${ja}">`
+        + `<figcaption>${ja}${cur ? '（今の問題）' : ''}</figcaption></figure>`;
+    }).join('');
+    els.fbSimilarNote.textContent = g.note_ja || '';
+    els.fbSimilar.hidden = false;
   }
 
   function next() {

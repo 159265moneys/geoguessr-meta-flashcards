@@ -98,6 +98,21 @@ for (const f of FILES) {
   }
 }
 
+// flag_similar.json のグループも検証対象に含める
+const fsimPath = path.join(DATA_DIR, 'flag_similar.json');
+if (fs.existsSync(fsimPath)) {
+  try {
+    const fsd = JSON.parse(fs.readFileSync(fsimPath, 'utf8'));
+    for (const g of (fsd.groups || [])) {
+      const q = norm(g.source_quote);
+      if (!q) { skipped++; continue; }
+      const w = parseWiki(g.source_url);
+      if (!w) { manual++; continue; }
+      targets.push({ id: 'flagsim:' + (g.codes || []).join('-'), q, w, url: g.source_url });
+    }
+  } catch (e) { /* ignore */ }
+}
+
 async function verifyOne(t, force) {
   let body = norm(await getExtract(t.w.host, t.w.title, force));
   if (body.includes(t.q)) return true;

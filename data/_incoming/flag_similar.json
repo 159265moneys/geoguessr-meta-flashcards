@@ -1,0 +1,174 @@
+{
+  "source_url": "https://en.wikipedia.org/wiki/List_of_national_flags_by_design",
+  "fetched_at": "2026-06-16",
+  "groups": [
+    {
+      "codes": ["td", "ro", "md", "ad"],
+      "note_ja": "いずれも青・黄・赤の縦三色。見分けの決め手は中央の紋章の有無：モルドバとアンドラは中央の黄色帯に紋章があり（アンドラは中央の黄色帯がやや幅広で帯幅比8:9:8）、チャドとルーマニアは無地。チャドとルーマニアは公式仕様上ほぼ同一で、目視ではほぼ区別不能（チャドは色のばらつきがやや大きいとされる）。モルドバとルーマニアの違いは紋章に加え縦横比（モルドバ1:2、ルーマニア2:3）。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Romania",
+      "source_quote": "The flag of Andorra also has the same tricolour as the flag of Romania. ... The flag of Moldova is inspired by the Romanian tricolour except that it has a 1:2 ratio, slightly different colors and the Moldovan coat of arms in the middle. ... The state flag of Chad is extremely similar, to the point it has caused some amount of international discussion."
+    },
+    {
+      "codes": ["td", "ro"],
+      "note_ja": "青・黄・赤の縦三色で、どちらも無地（紋章なし）。両者は公式仕様上ほぼ同一で、目で見て確実に区別できる構造的差はない。チャドの旗は色のばらつきがルーマニアより大きいとされるが、決定的な見分けは困難。文脈（位置情報）での判断が必要。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Chad",
+      "source_quote": "The flag of Chad is almost identical to the national flag of Romania, although the colours in Chad flags may vary more than those specified for Romania."
+    },
+    {
+      "codes": ["id", "mc", "pl", "sg"],
+      "note_ja": "赤白系の横二分割。ポーランドは白が上・赤が下（他は赤が上・白が下）で逆。インドネシアとモナコは赤が上・白が下で同じ配色だが、縦横比が違う（モナコ4:5でほぼ正方形に近い、インドネシア2:3で横長）。シンガポールは赤が上・白が下に加えて、左上に白い三日月と5つの星があるので明確に区別できる。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Monaco",
+      "source_quote": "The flag of Monaco is graphically similar to the flag of Indonesia, with differences in their dimension ratios (Monaco's at 4:5 and Indonesia's at 2:3). The flag of Poland is also similar to that of Monaco, but with the colours reversed – white on top and red on the bottom."
+    },
+    {
+      "codes": ["id", "mc"],
+      "note_ja": "どちらも赤が上・白が下の横二分割で配色は同一。違いは縦横比のみ：モナコは4:5でほぼ正方形に近く、インドネシアは2:3で横長。出典によれば赤の色味もわずかに異なる。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Indonesia",
+      "source_quote": "The flag of Indonesia is graphically similar to the flag of Monaco, with a slight difference in the shade of red, and ratio of its dimensions."
+    },
+    {
+      "codes": ["ie", "ci"],
+      "note_ja": "緑・白・橙の縦三色だが左右が逆（鏡像）。アイルランドは竿側（左）が緑→白→橙、コートジボワールは竿側（左）が橙→白→緑。縦横比も違う（アイルランド1:2で横長、コートジボワール2:3）。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Ivory_Coast",
+      "source_quote": "The flag of Ivory Coast is similar to the flag of Ireland, which is the exact same tricolour but reversed (the green being on the hoist side) and with a width-to-length ratio of 1:2 rather than 2:3."
+    },
+    {
+      "codes": ["ml", "gn", "sn", "cm"],
+      "note_ja": "汎アフリカの緑・黄・赤系の縦三色。配色順と中央の記号で区別する：マリは竿側（左）から緑→黄→赤で無地、ギニアはその逆で赤→黄→緑（無地）。セネガルはマリと同じ緑→黄→赤だが中央の黄色帯に緑の星が1つある。カメルーンは緑→赤→黄で中央の赤帯に黄色の星が1つ。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Guinea",
+      "source_quote": "The colors of the flag from left to right are the reverse of the flag of Mali."
+    },
+    {
+      "codes": ["sn", "ml"],
+      "note_ja": "どちらも緑・黄・赤の縦三色で竿側（左）から緑→黄→赤と配色順は同じ。違いはセネガルの中央の黄色帯に緑の五芒星が1つあること。マリは無地。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Senegal",
+      "source_quote": "The Pan-African colours of Senegal's flag are shared by several other countries in the region, including Cameroon, Guinea and Mali."
+    },
+    {
+      "codes": ["nl", "lu"],
+      "note_ja": "赤・白・青の横三色で配色順は同一。違いは2点：ルクセンブルクの方が横長（オランダはやや正方形寄り）で、ルクセンブルクの青は水色寄りの明るい青・赤もやや明るい。オランダは濃いめの青と赤。出典に色味の明記あり。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Luxembourg",
+      "source_quote": "The tricolour flag of Luxembourg is graphically almost identical to the flag of the Netherlands, except that it is longer and its light blue stripe and red stripe are a lighter shade."
+    },
+    {
+      "codes": ["nl", "ru", "lu", "hr"],
+      "note_ja": "赤白青系の横三色。オランダ・ルクセンブルク・クロアチアは赤が上（赤→白→青）、ロシアは白が上（白→青→赤）で配色順が違う。クロアチアは中央に紋章があるので無地のオランダ・ロシアと区別できる。ルクセンブルクとオランダの違いは横長さと色味（ルクセンブルクが横長で水色寄り）。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_the_Netherlands",
+      "source_quote": "The flag of the Netherlands is similar to that of Luxembourg, but it has a smaller width and it uses slightly darker shades of red and blue."
+    },
+    {
+      "codes": ["no", "is"],
+      "note_ja": "どちらもスカンジナビア十字（竿寄りに縦棒がある十字）で、白で縁取りした十字を持つが配色が反転している。ノルウェーは赤地に青い十字（白で縁取り）、アイスランドは青地に赤い十字（白で縁取り）。地の色と十字の色を見れば区別できる。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Iceland",
+      "source_quote": "The civil national flag of Icelanders is sky-blue with a snow-white cross and a fiery-red cross inside the white cross."
+    },
+    {
+      "codes": ["co", "ec", "ve"],
+      "note_ja": "いずれも黄・青・赤の横帯で、上半分が黄色（黄帯が下2つより幅広、比率2:1:1）。区別は中央の記号：コロンビアは無地（一般用）、エクアドルは中央に紋章（コンドル付き）、ベネズエラは中央に白い星が弧状に8つ（国旗版は左上に紋章）。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Ecuador",
+      "source_quote": "All three flags use the yellow, blue and red tricolor, but that is where the similarities end. ... The flag is charged with the Ecuadorian coat of arms scaled to one-half the width of the flag and centered in the field."
+    },
+    {
+      "codes": ["sv", "ni", "hn"],
+      "note_ja": "いずれも青・白・青の横三色。中央の記号で区別：エルサルバドルは中央に紋章（火山と虹、SALVADOR等の文字）、ニカラグアは中央に三角形の紋章（虹付き、REPUBLICA DE NICARAGUAの文字）、ホンジュラスは中央に青い五芒星が5つ（X字/梅花状の配置）で文字なし。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_El_Salvador",
+      "source_quote": "the new flag strongly resembled the flag of Nicaragua, as both were blue-white-blue horizontal tribands with coats of arms depicting five volcanoes in the center."
+    },
+    {
+      "codes": ["sv", "ni"],
+      "note_ja": "どちらも青・白・青の横三色で中央に紋章があり、紋章にはどちらも5つの火山が描かれよく似ている。区別点：ニカラグアの紋章は三角形の輪郭で上部に虹があり、周囲に円形の文字（REPUBLICA DE NICARAGUA / AMERICA CENTRAL）。エルサルバドルの紋章も三角形だが月桂樹に囲まれ、下に黄色いリボンで DIOS UNION LIBERTAD の文字。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_El_Salvador",
+      "source_quote": "the new flag strongly resembled the flag of Nicaragua, as both were blue-white-blue horizontal tribands with coats of arms depicting five volcanoes in the center."
+    },
+    {
+      "codes": ["gt", "sv", "ni"],
+      "note_ja": "中米の青白青系だが、グアテマラだけストライプが縦（青・白・青の縦三色）で中央に紋章（ケツァール鳥と巻物）。エルサルバドルとニカラグアはストライプが横（青・白・青の横三色）。まず縦か横かで切り分けられる。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Guatemala",
+      "source_quote": ""
+    },
+    {
+      "codes": ["mx", "it"],
+      "note_ja": "どちらも緑・白・赤の縦三色。決定的な違いはメキシコの中央（白帯）に紋章（サボテンの上でヘビをくわえた鷲）があること。イタリアは無地。出典によればメキシコの緑・赤はイタリアより濃い（特に緑）。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Mexico",
+      "source_quote": "Both flags use the same colours (green, white, and red), but the Mexican flag has darker shades of green and red (particularly green)."
+    },
+    {
+      "codes": ["si", "sk", "ru", "rs", "hr"],
+      "note_ja": "汎スラブの白・青・赤の横三色。紋章の有無と位置で区別：ロシアは無地（白→青→赤）。スロベニアは左上（竿側）に紋章、スロバキアは中央やや左寄りに紋章、クロアチアは中央に紋章。セルビアは無地に近い民用旗もあるが国旗版は中央やや左に紋章（赤帯が上の赤→青→白）。配色順とセルビアの赤帯が上である点にも注意。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Slovenia",
+      "source_quote": "charged with the coat of arms of Slovenia at the hoist side"
+    },
+    {
+      "codes": ["si", "sk"],
+      "note_ja": "どちらも白・青・赤の横三色（白が上）で中央付近に紋章を持つ。区別は紋章の位置と中身：スロベニアは紋章が左上（竿寄り）にずれていて、紋章は山と海・3つの金星。スロバキアは紋章がほぼ中央左寄りで、紋章は赤地に白い二重十字と3つの丘。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Slovenia",
+      "source_quote": "charged with the coat of arms of Slovenia at the hoist side"
+    },
+    {
+      "codes": ["nz", "au"],
+      "note_ja": "どちらも青地・左上にユニオンジャック・右側に南十字星。区別：ニュージーランドは星が4つだけで、赤く塗られ白で縁取り。オーストラリアは南十字が白い星5つ（うち1つは小さい）で、さらにユニオンジャックの下に大きな連邦星（七稜星）が1つあり、合計星6つ。星の色（赤か白か）と数、連邦星の有無で見分ける。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_New_Zealand",
+      "source_quote": "in Australia's case there are five all-white stars and an additional larger star beneath the Union Jack canton, while New Zealand's four stars have red centres."
+    },
+    {
+      "codes": ["eg", "iq", "ye", "sd"],
+      "note_ja": "いずれも赤・白・黒の横三色で、中央の白帯の記号で区別する：イエメンは無地（記号なし）。エジプトは中央に金色のサラディンの鷲。イラクは中央に緑のアラビア文字（タクビール「الله أكبر」）。スーダンは竿側に緑の三角形があり横三色とは構成が異なる（実質的に別構成）。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Egypt",
+      "source_quote": "The same horizontal tricolour is used by Iraq, Sudan and Yemen (and formerly Libya and Syria), the only difference being the presence (or absence) of distinguishing national emblems in the white band."
+    },
+    {
+      "codes": ["ro", "be"],
+      "note_ja": "どちらも縦三色だが配色が違う：ルーマニアは青・黄・赤、ベルギーは黒・黄・赤（竿側が黒）。竿側（左端）が青か黒かで区別できる。ベルギーは縦横比がやや正方形寄り。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Belgium",
+      "source_quote": ""
+    },
+    {
+      "codes": ["cl", "cu"],
+      "note_ja": "どちらも左側に星付きの図形を持つが構成が違う。チリは白地に赤の横帯（上が白、下が赤の2分割）で、左上に青い正方形＋白い五芒星1つ。キューバは青白の横5本ストライプに、竿側から赤い三角形＋白い五芒星1つ。ストライプの本数（チリは2色、キューバは5本）と、星のある図形が四角（チリ）か三角（キューバ）かで区別。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Chile",
+      "source_quote": ""
+    },
+    {
+      "codes": ["ar", "uy"],
+      "note_ja": "どちらも青白の横ストライプに『五月の太陽』（人面の黄色い太陽）を持つ。区別：アルゼンチンは水色・白・水色の横三色で太陽は中央。ウルグアイは青白の横9本ストライプで、太陽は左上の白い四角の中。ストライプ本数（3本対9本）と太陽の位置で見分ける。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Uruguay",
+      "source_quote": ""
+    },
+    {
+      "codes": ["bo", "gh", "et", "lt"],
+      "note_ja": "黄・赤・緑系の汎アフリカ／類似横三色。配色順と記号で区別：ボリビアは赤・黄・緑（赤が上）で中央に紋章（国旗版）。ガーナは赤・黄・緑で中央に黒い星1つ。エチオピアは緑・黄・赤（緑が上）で中央に青円＋黄の星。リトアニアは黄・緑・赤（黄が上、無地）。まず一番上の色と中央の記号で切り分ける。",
+      "source_url": "https://en.wikipedia.org/wiki/List_of_national_flags_by_design",
+      "source_quote": ""
+    },
+    {
+      "codes": ["ph", "cz"],
+      "note_ja": "どちらも左側に三角形を持つ構成。区別：フィリピンは青・赤の横2帯＋竿側に白い三角形（三角内に黄色い太陽と3つの星）。チェコは白・赤の横2帯＋竿側に青い三角形（記号なし）。三角形の色（白か青か）と内部の太陽・星の有無で見分ける。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_the_Philippines",
+      "source_quote": ""
+    },
+    {
+      "codes": ["ie", "it"],
+      "note_ja": "どちらも緑・白・橙/赤の縦三色で紛らわしいが、3色目（フライ側）の色が違う：アイルランドは橙（オレンジ）、イタリアは赤。橙か赤かで区別。アイルランドの方が横長（1:2）。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Ireland",
+      "source_quote": ""
+    },
+    {
+      "codes": ["fi", "se", "dk", "no", "is"],
+      "note_ja": "スカンジナビア十字（竿寄りに縦棒がずれた十字）の仲間。地と十字の配色で区別：フィンランドは白地に青十字、スウェーデンは青地に黄十字、デンマークは赤地に白十字、ノルウェーは赤地に青十字（白縁）、アイスランドは青地に赤十字（白縁）。ノルウェーとアイスランドだけ十字が二重（白で縁取り）。",
+      "source_url": "https://en.wikipedia.org/wiki/Nordic_cross_flag",
+      "source_quote": ""
+    },
+    {
+      "codes": ["at", "lv"],
+      "note_ja": "どちらも赤・白・赤の横三色だが色味と比率が違う：オーストリアは鮮やかな赤で上下帯と白帯が等幅。ラトビアは暗い臙脂色（カーマインレッド）で、中央の白帯が上下の赤帯より狭い（比率2:1:2）。中央白帯の細さと赤の暗さで見分ける。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Latvia",
+      "source_quote": "The Latvian flag ... is described as carmine, a dark shade of red ... The middle white stripe is one-fifth of the flag's height."
+    },
+    {
+      "codes": ["pl", "id", "mc", "sg"],
+      "note_ja": "ポーランドを中心とした赤白系の整理：ポーランドは白が上・赤が下。インドネシアとモナコは逆（赤が上・白が下）。シンガポールも赤が上・白が下で左上に三日月と5つ星。ポーランドだけ白が上なので、まず白が上か赤が上かで切り分けると速い。",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Poland",
+      "source_quote": ""
+    }
+  ]
+}

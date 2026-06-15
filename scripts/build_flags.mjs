@@ -31,7 +31,11 @@ for (const c of countries) {
   if (c.independent !== true) continue;            // 主権国のみ
   const code = (c.cca2 || '').toLowerCase();
   if (!code) continue;
-  const ja = (c.translations && c.translations.jpn && c.translations.jpn.common)
+  // 日本語名は mledoze の通称(jpn.common)を基本にする（中国/韓国/タイ等、クイズ向きの自然な通称）。
+  // ただし略称や不統一が混じる一部だけ flagcdn(ja) の正式表記で補正する。
+  const JA_OVERRIDE = { ae: 'アラブ首長国連邦', us: 'アメリカ合衆国' };
+  const ja = JA_OVERRIDE[code]
+    || (c.translations && c.translations.jpn && c.translations.jpn.common)
     || jaCodes[code] || c.name.common;
   records.push({
     id: `flag_${code}`,

@@ -15,6 +15,11 @@
   const covSet = COVERAGE && COVERAGE.in_coverage ? new Set(COVERAGE.in_coverage.map(covNorm)) : null;
   const inCov = (c) => (covSet ? covSet.has(covNorm(COV_ALIAS[c] || c)) : null);
 
+  // 紛らわしい国旗データ
+  const FLAG_SIMILAR = window.GEOQUIZ_FLAG_SIMILAR || null;
+  const flagJa = {};
+  (DATA.flag || []).forEach((f) => { const m = f.id && f.id.match(/^flag_([a-z]{2})$/); if (m) flagJa[m[1]] = f.answer_country_ja || f.answer_country; });
+
   const catSel = document.getElementById('cat-sel');
   const onlyIssues = document.getElementById('only-issues');
   const sampleInput = document.getElementById('sample');
@@ -23,7 +28,22 @@
 
   const present = ORDER.filter((c) => Array.isArray(DATA[c]) && DATA[c].length);
   catSel.innerHTML = '<option value="all">全カテゴリ</option>' +
-    present.map((c) => `<option value="${c}">${CATEGORY_LABELS[c]}</option>`).join('');
+    present.map((c) => `<option value="${c}">${CATEGORY_LABELS[c]}</option>`).join('') +
+    (FLAG_SIMILAR && FLAG_SIMILAR.groups && FLAG_SIMILAR.groups.length ? '<option value="flagsim">似ている国旗（参考）</option>' : '');
+
+  function renderFlagSim() {
+    const groups = FLAG_SIMILAR.groups;
+    summaryEl.innerHTML = `紛らわしい国旗: <b>${groups.length}</b> 組 ／ 出典: <a href="${esc(FLAG_SIMILAR.source_url)}" target="_blank" rel="noopener">${esc(FLAG_SIMILAR.source_url)}</a>`;
+    let html = '<div class="cat-section"><h2>似ている国旗（参考データ）</h2><table><thead><tr><th>国旗</th><th>見分け方（note_ja）</th><th>source_url</th></tr></thead><tbody>';
+    groups.forEach((g) => {
+      const flagsHtml = g.codes.map((c) => `<figure style="display:inline-block;margin:2px;width:64px;text-align:center;vertical-align:top"><img loading="lazy" src="https://flagcdn.com/w80/${c}.png" style="width:64px;border:1px solid var(--border)"><figcaption style="font-size:10px;color:var(--muted)">${esc(flagJa[c] || c.toUpperCase())}</figcaption></figure>`).join('');
+      const q = (g.source_quote && g.source_quote.trim()) ? `<div style="color:var(--muted);font-size:11px;margin-top:4px">“${esc(g.source_quote)}”</div>` : '';
+      const src = g.source_url ? `<a href="${esc(g.source_url)}" target="_blank" rel="noopener">${esc(g.source_url)}</a>` : '<span class="miss">— 欠落</span>';
+      html += `<tr><td>${flagsHtml}</td><td>${esc(g.note_ja)}${q}</td><td>${src}</td></tr>`;
+    });
+    html += '</tbody></table></div>';
+    tablesEl.innerHTML = html;
+  }
 
   function hasIssue(r) {
     for (const f of REQUIRED) if (!r[f] || String(r[f]).trim() === '') return true;
@@ -46,6 +66,7 @@
 
   function render() {
     const cat = catSel.value;
+    if (cat === 'flagsim') { renderFlagSim(); return; }
     const issuesOnly = onlyIssues.checked;
     const n = parseInt(sampleInput.value, 10) || 0;
     const cats = cat === 'all' ? present : [cat];

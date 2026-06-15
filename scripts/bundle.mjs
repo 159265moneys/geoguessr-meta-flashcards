@@ -28,19 +28,23 @@ for (const [cat, file] of Object.entries(FILES)) {
   total += out[cat].length;
 }
 
-// カバー範囲（ジオゲッサ/SV）— あれば同梱
-let coverage = null;
-const covPath = path.join(DATA_DIR, 'coverage.json');
-if (fs.existsSync(covPath)) {
-  try { coverage = JSON.parse(fs.readFileSync(covPath, 'utf8')); }
-  catch (e) { console.error(`✗ coverage.json のパース失敗: ${e.message}`); process.exit(1); }
+// 付随データ（あれば同梱）: カバー範囲 / 紛らわしい国旗
+function readOptional(file) {
+  const p = path.join(DATA_DIR, file);
+  if (!fs.existsSync(p)) return null;
+  try { return JSON.parse(fs.readFileSync(p, 'utf8')); }
+  catch (e) { console.error(`✗ ${file} のパース失敗: ${e.message}`); process.exit(1); }
 }
+const coverage = readOptional('coverage.json');
+const flagSimilar = readOptional('flag_similar.json');
 
 const banner = `/* 自動生成ファイル — 直接編集しないこと。\n   生成元: data/*.json / 生成: node scripts/bundle.mjs */\n`;
 const js = banner +
   'window.GEOQUIZ_DATA = ' + JSON.stringify(out) + ';\n' +
-  'window.GEOQUIZ_COVERAGE = ' + JSON.stringify(coverage) + ';\n';
+  'window.GEOQUIZ_COVERAGE = ' + JSON.stringify(coverage) + ';\n' +
+  'window.GEOQUIZ_FLAG_SIMILAR = ' + JSON.stringify(flagSimilar) + ';\n';
 fs.writeFileSync(path.join(DATA_DIR, 'bundle.js'), js);
 if (coverage) console.log(`   coverage: in_coverage ${coverage.in_coverage.length} / limited ${coverage.limited_only.length}`);
+if (flagSimilar) console.log(`   flag_similar: ${flagSimilar.groups.length} 組`);
 console.log(`✅ data/bundle.js を生成（${total} 件）`);
 for (const cat of Object.keys(FILES)) console.log(`   ${cat}: ${out[cat].length} 件`);

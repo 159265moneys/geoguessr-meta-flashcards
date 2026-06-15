@@ -55,8 +55,12 @@
   function saveSettings() { try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); } catch (e) {} }
 
   // ---- 出題プール ----
+  // 出題可能 = 視覚情報（画像 or サンプル文字）があるカードのみ。
+  // 画像もサンプルも無いカードは監査用にデータには残るが、クイズには出さない。
+  function isQuizzable(c) { return !!(c.image_url || c.image_local || c.sample_text); }
+
   function activePool() {
-    let pool = allCards;
+    let pool = allCards.filter(isQuizzable);
     if (settings.category !== 'all') pool = pool.filter((c) => c.category === settings.category);
     if (settings.region !== 'all') pool = pool.filter((c) => (c.region || '') === settings.region);
     if (settings.weakMode) {
@@ -118,6 +122,7 @@
     statSession: $('stat-session'),
     imageWrap: $('q-image-wrap'),
     image: $('q-image'),
+    sample: $('q-sample'),
     choices: $('choices'),
     feedback: $('feedback'),
     fbResult: $('fb-result'),
@@ -138,10 +143,10 @@
 
   function populateFilters() {
     // カテゴリ（データが存在するものだけ）
-    const cats = CATEGORY_ORDER.filter((c) => allCards.some((x) => x.category === c));
+    const cats = CATEGORY_ORDER.filter((c) => allCards.some((x) => x.category === c && isQuizzable(x)));
     let html = '<option value="all">全カテゴリ</option>';
     cats.forEach((c) => {
-      const n = allCards.filter((x) => x.category === c).length;
+      const n = allCards.filter((x) => x.category === c && isQuizzable(x)).length;
       html += `<option value="${c}">${CATEGORY_LABELS[c]}（${n}）</option>`;
     });
     els.catFilter.innerHTML = html;
@@ -177,10 +182,25 @@
     els.qCat.textContent = CATEGORY_LABELS[card.category] || card.category;
 
     els.imageWrap.classList.remove('broken');
-    els.image.style.display = '';
-    els.image.src = card.image_local || card.image_url || '';
-    els.image.alt = '出題画像';
-    els.image.onerror = () => { els.imageWrap.classList.add('broken'); els.image.style.display = 'none'; };
+    const imgSrc = card.image_local || card.image_url || '';
+    if (imgSrc) {
+      // 画像カード
+      els.sample.hidden = true;
+      els.image.style.display = '';
+      els.image.src = imgSrc;
+      els.image.alt = '出題画像';
+      els.image.onerror = () => { els.imageWrap.classList.add('broken'); els.image.style.display = 'none'; };
+    } else if (card.sample_text) {
+      // テキストサンプルカード（文字カテゴリなど）
+      els.image.style.display = 'none';
+      els.image.removeAttribute('src');
+      els.sample.hidden = false;
+      els.sample.textContent = card.sample_text;
+    } else {
+      els.image.style.display = 'none';
+      els.sample.hidden = true;
+      els.imageWrap.classList.add('broken');
+    }
 
     const choices = buildChoices(card);
     els.choices.innerHTML = '';

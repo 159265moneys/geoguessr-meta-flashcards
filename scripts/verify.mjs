@@ -58,7 +58,7 @@ for (const cat of CATEGORIES) {
     if (r.category && r.category !== cat) errors.push(`${tag} category 不一致: "${r.category}" (ファイルは ${cat})`);
     if (!CATEGORIES.includes(r.category)) errors.push(`${tag} category が規定外: "${r.category}"`);
     if (r.source_url && !isUrl(r.source_url)) errors.push(`${tag} source_url が URL 形式でない: "${r.source_url}"`);
-    if (!r.image_url && !r.image_local) errors.push(`${tag} 画像参照なし（image_url / image_local の両方欠落）`);
+    if (!r.image_url && !r.image_local && !r.sample_text) warnings.push(`${tag} 視覚情報なし（画像/サンプル欠落 → 出題対象外・監査用。後で画像追加可）`);
     if (r.image_url && !isUrl(r.image_url)) errors.push(`${tag} image_url が URL 形式でない: "${r.image_url}"`);
 
     if (r && r.id) {

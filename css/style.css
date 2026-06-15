@@ -121,6 +121,15 @@ main { padding: 16px 14px 40px; max-width: 720px; margin: 0 auto; }
   object-fit: contain;
   display: block;
 }
+.sample-text {
+  font-size: clamp(44px, 13vw, 104px);
+  line-height: 1.35;
+  color: var(--text);
+  text-align: center;
+  padding: 18px 14px;
+  word-break: break-word;
+  font-family: "Hiragino Sans", "Noto Sans", "Noto Sans JP", system-ui, sans-serif;
+}
 .image-wrap.broken::after {
   content: "画像を読み込めませんでした（出典リンクで確認してください）";
   color: var(--muted);

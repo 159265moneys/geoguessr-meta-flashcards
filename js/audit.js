@@ -20,7 +20,7 @@
 
   function hasIssue(r) {
     for (const f of REQUIRED) if (!r[f] || String(r[f]).trim() === '') return true;
-    if (!r.image_url && !r.image_local) return true;
+    if (!r.image_url && !r.image_local && !r.sample_text) return true;
     return false;
   }
 
@@ -59,13 +59,17 @@
       rows.forEach((r) => {
         const img = (r.image_local || r.image_url)
           ? `<td><img loading="lazy" src="${esc(r.image_local || r.image_url)}" alt=""></td>`
-          : '<td class="miss">— 欠落</td>';
+          : (r.sample_text
+            ? `<td><span style="font-size:28px">${esc(r.sample_text)}</span></td>`
+            : '<td class="miss">— 欠落</td>');
         const src = r.source_url
           ? `<td><a href="${esc(r.source_url)}" target="_blank" rel="noopener">${esc(r.source_url)}</a></td>`
           : '<td class="miss">— 欠落</td>';
+        const quote = (r.source_quote && r.source_quote.trim())
+          ? `<div style="color:var(--muted);font-size:11px;margin-top:4px">“${esc(r.source_quote)}”</div>` : '';
         const meta = (r.meta_text && r.meta_text.trim())
-          ? '<td>' + esc(r.meta_text) + '</td>'
-          : '<td class="miss">（空）</td>';
+          ? '<td>' + esc(r.meta_text) + quote + '</td>'
+          : '<td class="miss">（空）' + quote + '</td>';
         html += '<tr>' + img + cell(r.id) +
           `<td>${esc(r.answer_country)}<br><span style="color:var(--muted)">${esc(r.answer_country_ja || '')}</span></td>` +
           cell(r.region) + meta + src + cell(r.fetched_at) + '</tr>';

@@ -28,8 +28,19 @@ for (const [cat, file] of Object.entries(FILES)) {
   total += out[cat].length;
 }
 
+// カバー範囲（ジオゲッサ/SV）— あれば同梱
+let coverage = null;
+const covPath = path.join(DATA_DIR, 'coverage.json');
+if (fs.existsSync(covPath)) {
+  try { coverage = JSON.parse(fs.readFileSync(covPath, 'utf8')); }
+  catch (e) { console.error(`✗ coverage.json のパース失敗: ${e.message}`); process.exit(1); }
+}
+
 const banner = `/* 自動生成ファイル — 直接編集しないこと。\n   生成元: data/*.json / 生成: node scripts/bundle.mjs */\n`;
-const js = banner + 'window.GEOQUIZ_DATA = ' + JSON.stringify(out) + ';\n';
+const js = banner +
+  'window.GEOQUIZ_DATA = ' + JSON.stringify(out) + ';\n' +
+  'window.GEOQUIZ_COVERAGE = ' + JSON.stringify(coverage) + ';\n';
 fs.writeFileSync(path.join(DATA_DIR, 'bundle.js'), js);
+if (coverage) console.log(`   coverage: in_coverage ${coverage.in_coverage.length} / limited ${coverage.limited_only.length}`);
 console.log(`✅ data/bundle.js を生成（${total} 件）`);
 for (const cat of Object.keys(FILES)) console.log(`   ${cat}: ${out[cat].length} 件`);

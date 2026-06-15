@@ -170,6 +170,7 @@ main { padding: 16px 14px 40px; max-width: 720px; margin: 0 auto; }
 .fb-meta.empty { color: var(--muted); font-style: italic; }
 .fb-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
 .fb-chips .chip { font-size: 11px; }
+.fb-chips .chip.out { color: #f0a36b; border-color: #7a4a2a; background: rgba(240,140,80,.12); }
 .fb-source {
   display: inline-block;
   font-size: 13px;

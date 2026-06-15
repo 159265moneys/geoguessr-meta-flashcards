@@ -42,13 +42,29 @@
     return Array.from(map.values());
   })();
 
+  // ---- カバー範囲（ジオゲッサ/Google Street View 公式カバー） ----
+  // data/coverage.json（出典: Wikipedia「Google Street View coverage」）を基準にする。
+  const COVERAGE = window.GEOQUIZ_COVERAGE || null;
+  // 自データの国名 → カバー表の表記 の差異を吸収する別名（出典側の表記に合わせる）
+  const COV_ALIAS = { 'Türkiye': 'Turkey', 'Czechia': 'Czech Republic' };
+  function covNorm(s) {
+    return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  }
+  const covSet = COVERAGE && Array.isArray(COVERAGE.in_coverage)
+    ? new Set(COVERAGE.in_coverage.map(covNorm)) : null;
+  function isInCoverage(card) {
+    if (!covSet) return true; // カバーデータが無ければ全件を対象扱い
+    const c = card.answer_country;
+    return covSet.has(covNorm(COV_ALIAS[c] || c));
+  }
+
   // ---- localStorage ----
   function readJSON(key) {
     try { return JSON.parse(localStorage.getItem(key)) || null; } catch (e) { return null; }
   }
   let progress = readJSON(PROGRESS_KEY) || {};
   let settings = Object.assign(
-    { category: 'all', region: 'all', weakMode: false },
+    { category: 'all', region: 'all', weakMode: false, coverageOnly: true },
     readJSON(SETTINGS_KEY) || {}
   );
   function saveProgress() { try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress)); } catch (e) {} }
@@ -61,6 +77,7 @@
 
   function activePool() {
     let pool = allCards.filter(isQuizzable);
+    if (settings.coverageOnly && covSet) pool = pool.filter(isInCoverage);
     if (settings.category !== 'all') pool = pool.filter((c) => c.category === settings.category);
     if (settings.region !== 'all') pool = pool.filter((c) => (c.region || '') === settings.region);
     if (settings.weakMode) {
@@ -102,8 +119,12 @@
 
   function buildChoices(card) {
     const correctEn = card.answer_country;
-    const same = masterCountries.filter((m) => m.en !== correctEn && m.region && m.region === card.region);
-    const rest = masterCountries.filter((m) => m.en !== correctEn && (!m.region || m.region !== card.region));
+    // カバーON時はダミー選択肢もジオゲッサ圏の国に限定（圏外の国は選択肢に出さない）
+    const base = (settings.coverageOnly && covSet)
+      ? masterCountries.filter((m) => covSet.has(covNorm(COV_ALIAS[m.en] || m.en)))
+      : masterCountries;
+    const same = base.filter((m) => m.en !== correctEn && m.region && m.region === card.region);
+    const rest = base.filter((m) => m.en !== correctEn && (!m.region || m.region !== card.region));
     let distractors = shuffle(same).slice(0, 3);
     if (distractors.length < 3) distractors = distractors.concat(shuffle(rest).slice(0, 3 - distractors.length));
     const correct = { en: correctEn, ja: card.answer_country_ja || correctEn, correct: true };
@@ -116,6 +137,7 @@
     catFilter: $('cat-filter'),
     regionFilter: $('region-filter'),
     weakToggle: $('weak-toggle'),
+    coverageToggle: $('coverage-toggle'),
     quiz: $('quiz'),
     empty: $('empty-msg'),
     qCat: $('q-cat'),
@@ -142,15 +164,18 @@
   let answered = false;
 
   function populateFilters() {
-    // カテゴリ（データが存在するものだけ）
-    const cats = CATEGORY_ORDER.filter((c) => allCards.some((x) => x.category === c && isQuizzable(x)));
+    // 現在のカバー設定を反映した「出題可能か」
+    const eligible = (x) => isQuizzable(x) && (!settings.coverageOnly || isInCoverage(x));
+    // カテゴリ（該当データが存在するものだけ）
+    const cats = CATEGORY_ORDER.filter((c) => allCards.some((x) => x.category === c && eligible(x)));
     let html = '<option value="all">全カテゴリ</option>';
     cats.forEach((c) => {
-      const n = allCards.filter((x) => x.category === c && isQuizzable(x)).length;
+      const n = allCards.filter((x) => x.category === c && eligible(x)).length;
       html += `<option value="${c}">${CATEGORY_LABELS[c]}（${n}）</option>`;
     });
     els.catFilter.innerHTML = html;
-    els.catFilter.value = settings.category;
+    els.catFilter.value = (settings.category === 'all' || cats.includes(settings.category)) ? settings.category : 'all';
+    settings.category = els.catFilter.value;
 
     // 地域
     const regions = Array.from(new Set(allCards.map((c) => c.region).filter(Boolean))).sort();
@@ -161,6 +186,7 @@
     settings.region = els.regionFilter.value;
 
     els.weakToggle.checked = !!settings.weakMode;
+    if (els.coverageToggle) els.coverageToggle.checked = !!settings.coverageOnly;
   }
 
   function updateStats() {
@@ -256,7 +282,8 @@
     const chips = [];
     if (current.answer_country) chips.push(`${current.answer_country_ja || current.answer_country}（${current.answer_country}）`);
     if (current.region) chips.push(current.region);
-    els.fbChips.innerHTML = chips.map((c) => `<span class="chip">${c}</span>`).join('');
+    els.fbChips.innerHTML = chips.map((c) => `<span class="chip">${c}</span>`).join('')
+      + (covSet && !isInCoverage(current) ? '<span class="chip out">ジオゲッサ圏外（SV非対応）</span>' : '');
 
     if (current.source_url) {
       els.fbSource.hidden = false;
@@ -286,6 +313,11 @@
     });
     const seen = Object.keys(progress).length;
     lines.push(`総カード: ${allCards.length} 枚 / 出題済み: ${seen} 枚`);
+    if (covSet) {
+      const inCov = allCards.filter((x) => isQuizzable(x) && isInCoverage(x)).length;
+      const total = allCards.filter(isQuizzable).length;
+      lines.push(`ジオゲッサ圏（SV公式カバー）: 出題可能 ${total} 枚中 ${inCov} 枚`);
+    }
     els.menuCounts.innerHTML = lines.map((l) => `<div>${l}</div>`).join('');
     if (typeof els.menu.showModal === 'function') els.menu.showModal();
   }
@@ -304,6 +336,9 @@
   els.catFilter.addEventListener('change', () => { settings.category = els.catFilter.value; saveSettings(); next(); });
   els.regionFilter.addEventListener('change', () => { settings.region = els.regionFilter.value; saveSettings(); next(); });
   els.weakToggle.addEventListener('change', () => { settings.weakMode = els.weakToggle.checked; saveSettings(); next(); });
+  if (els.coverageToggle) els.coverageToggle.addEventListener('change', () => {
+    settings.coverageOnly = els.coverageToggle.checked; saveSettings(); populateFilters(); next();
+  });
   els.nextBtn.addEventListener('click', next);
   els.menuBtn.addEventListener('click', openMenu);
   els.closeMenu.addEventListener('click', () => els.menu.close());

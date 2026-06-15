@@ -8,6 +8,13 @@
   const ORDER = ['flag', 'bollard', 'plate', 'roadline', 'script'];
   const REQUIRED = ['id', 'category', 'answer_country', 'source_url'];
 
+  // カバー範囲（ジオゲッサ/SV）
+  const COVERAGE = window.GEOQUIZ_COVERAGE || null;
+  const COV_ALIAS = { 'Türkiye': 'Turkey', 'Czechia': 'Czech Republic' };
+  const covNorm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const covSet = COVERAGE && COVERAGE.in_coverage ? new Set(COVERAGE.in_coverage.map(covNorm)) : null;
+  const inCov = (c) => (covSet ? covSet.has(covNorm(COV_ALIAS[c] || c)) : null);
+
   const catSel = document.getElementById('cat-sel');
   const onlyIssues = document.getElementById('only-issues');
   const sampleInput = document.getElementById('sample');
@@ -70,8 +77,11 @@
         const meta = (r.meta_text && r.meta_text.trim())
           ? '<td>' + esc(r.meta_text) + quote + '</td>'
           : '<td class="miss">（空）' + quote + '</td>';
+        const covBadge = covSet
+          ? (inCov(r.answer_country) ? ' <span style="color:#2ea043;font-size:11px">●圏内</span>' : ' <span style="color:#e5534b;font-size:11px">●圏外</span>')
+          : '';
         html += '<tr>' + img + cell(r.id) +
-          `<td>${esc(r.answer_country)}<br><span style="color:var(--muted)">${esc(r.answer_country_ja || '')}</span></td>` +
+          `<td>${esc(r.answer_country)}${covBadge}<br><span style="color:var(--muted)">${esc(r.answer_country_ja || '')}</span></td>` +
           cell(r.region) + meta + src + cell(r.fetched_at) + '</tr>';
       });
       html += '</tbody></table></div>';

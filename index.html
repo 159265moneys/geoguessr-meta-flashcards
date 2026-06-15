@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f1419" />
+  <title>GeoGuessr メタ暗記</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🌍 メタ暗記</div>
+    <div class="filters">
+      <label>カテゴリ
+        <select id="cat-filter" aria-label="カテゴリ"></select>
+      </label>
+      <label>地域
+        <select id="region-filter" aria-label="地域"></select>
+      </label>
+      <label class="weak">
+        <input type="checkbox" id="weak-toggle" /> 苦手だけ
+      </label>
+    </div>
+    <button id="menu-btn" class="icon-btn" aria-label="メニュー">☰</button>
+  </header>
+
+  <main>
+    <section id="quiz" class="quiz">
+      <div class="card">
+        <div class="card-head">
+          <span class="chip" id="q-cat">—</span>
+          <span class="stat" id="stat-session">正解 0 / 0</span>
+        </div>
+        <div class="image-wrap" id="q-image-wrap">
+          <img id="q-image" alt="出題画像" />
+        </div>
+        <div class="choices" id="choices"></div>
+
+        <div class="feedback" id="feedback" hidden>
+          <div class="fb-result" id="fb-result"></div>
+          <div class="fb-meta" id="fb-meta"></div>
+          <div class="fb-chips" id="fb-chips"></div>
+          <a class="fb-source" id="fb-source" target="_blank" rel="noopener">出典を開く ↗</a>
+          <button class="next-btn" id="next-btn">次の問題 →</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="empty-msg" class="empty" hidden>
+      <p>このフィルタに該当するカードがありません。</p>
+      <p class="sub">カテゴリ・地域・「苦手だけ」を見直してください。</p>
+    </section>
+  </main>
+
+  <dialog id="menu" class="menu">
+    <h2>メニュー</h2>
+    <div class="menu-counts" id="menu-counts"></div>
+    <div class="menu-actions">
+      <a class="menu-link" href="./audit.html" target="_blank">🔍 監査ビュー（データの嘘チェック）</a>
+      <button class="menu-link danger" id="reset-btn">🗑 進捗を完全消去</button>
+    </div>
+    <p class="menu-note">
+      出題方向は「画像 → 国名」の再認のみ。間違えたカードは高頻度で、正解が続くカードは
+      間隔をあけて再出題されます（Leitner方式）。進捗はこの端末のブラウザ内（localStorage）にのみ保存されます。
+    </p>
+    <button class="menu-close" id="close-menu">閉じる</button>
+  </dialog>
+
+  <script src="./data/bundle.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>

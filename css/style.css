@@ -1,0 +1,233 @@
+:root {
+  --bg: #0f1419;
+  --surface: #1a212b;
+  --surface-2: #232c38;
+  --border: #2e3a47;
+  --text: #e6edf3;
+  --muted: #8b98a5;
+  --accent: #4aa3ff;
+  --correct: #2ea043;
+  --wrong: #e5534b;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Noto Sans JP", "Yu Gothic", Meiryo, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Topbar ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  padding-top: max(10px, env(safe-area-inset-top));
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 700; font-size: 16px; white-space: nowrap; }
+.filters {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+}
+.filters label {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.filters label.weak {
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--text);
+}
+.filters select {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 14px;
+  max-width: 46vw;
+}
+.icon-btn {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 18px;
+  width: 40px;
+  height: 36px;
+  cursor: pointer;
+}
+
+/* ---------- Quiz ---------- */
+main { padding: 16px 14px 40px; max-width: 720px; margin: 0 auto; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.chip {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.stat { font-size: 13px; color: var(--muted); }
+
+.image-wrap {
+  background: #0b0f14;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  max-height: 46vh;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.image-wrap img {
+  max-width: 100%;
+  max-height: 46vh;
+  object-fit: contain;
+  display: block;
+}
+.image-wrap.broken::after {
+  content: "画像を読み込めませんでした（出典リンクで確認してください）";
+  color: var(--muted);
+  font-size: 13px;
+  padding: 20px;
+  text-align: center;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.choice {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 14px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  min-height: 52px;
+  transition: background .12s, border-color .12s;
+}
+.choice:hover:not(:disabled) { background: #2b3744; }
+.choice:disabled { cursor: default; opacity: .9; }
+.choice .en { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; }
+.choice.correct { background: rgba(46,160,67,.18); border-color: var(--correct); }
+.choice.wrong { background: rgba(229,83,75,.18); border-color: var(--wrong); }
+
+/* ---------- Feedback ---------- */
+.feedback { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 14px; }
+.fb-result { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.fb-result.ok { color: var(--correct); }
+.fb-result.ng { color: var(--wrong); }
+.fb-meta { font-size: 14px; line-height: 1.6; color: var(--text); margin-bottom: 10px; white-space: pre-wrap; }
+.fb-meta.empty { color: var(--muted); font-style: italic; }
+.fb-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.fb-chips .chip { font-size: 11px; }
+.fb-source {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--accent);
+  text-decoration: none;
+  margin-bottom: 14px;
+  word-break: break-all;
+}
+.fb-source:hover { text-decoration: underline; }
+.next-btn {
+  display: block;
+  width: 100%;
+  background: var(--accent);
+  color: #051018;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.next-btn:hover { filter: brightness(1.07); }
+
+/* ---------- Empty ---------- */
+.empty { text-align: center; color: var(--muted); padding: 60px 20px; }
+.empty .sub { font-size: 13px; }
+
+/* ---------- Menu dialog ---------- */
+.menu {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: var(--radius);
+  max-width: 440px;
+  width: 92%;
+  padding: 20px;
+}
+.menu::backdrop { background: rgba(0,0,0,.6); }
+.menu h2 { margin: 0 0 12px; font-size: 18px; }
+.menu-counts { font-size: 13px; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
+.menu-actions { display: flex; flex-direction: column; gap: 10px; }
+.menu-link {
+  display: block;
+  text-align: left;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu-link.danger { color: var(--wrong); border-color: var(--wrong); }
+.menu-note { font-size: 12px; color: var(--muted); line-height: 1.7; margin: 16px 0; }
+.menu-close {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .filters select { max-width: 38vw; }
+  .brand { font-size: 14px; }
+}

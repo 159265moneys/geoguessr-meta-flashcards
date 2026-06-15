@@ -1,0 +1,15 @@
+{
+  "name": "geoguessr-meta-flashcards",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "GeoGuessr ビジュアルメタ暗記フラッシュカード（個人専用・静的サイト）",
+  "scripts": {
+    "verify": "node scripts/verify.mjs",
+    "verify:images": "node scripts/verify.mjs --images",
+    "audit:csv": "node scripts/verify.mjs --csv",
+    "bundle": "node scripts/bundle.mjs",
+    "build": "node scripts/bundle.mjs && node scripts/verify.mjs",
+    "serve": "python3 -m http.server 8000"
+  }
+}

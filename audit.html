@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>監査ビュー — GeoGuessr メタ暗記</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <style>
+    .audit-main { max-width: 1100px; margin: 0 auto; padding: 16px 14px 60px; }
+    .audit-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+    .audit-summary { font-size: 13px; color: var(--muted); line-height: 1.8; }
+    .cat-section { margin-top: 28px; }
+    .cat-section h2 { font-size: 17px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; position: sticky; top: 0; background: var(--bg); }
+    td img { width: 90px; height: auto; border-radius: 6px; background: #0b0f14; }
+    .miss { color: var(--wrong); font-weight: 700; }
+    a { color: var(--accent); word-break: break-all; }
+    .filter-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .filter-controls select, .filter-controls input { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; }
+    .back { color: var(--accent); text-decoration: none; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="audit-main">
+    <div class="audit-head">
+      <div>
+        <a class="back" href="./index.html">← クイズに戻る</a>
+        <h1 style="margin:6px 0 0;font-size:20px;">🔍 監査ビュー</h1>
+      </div>
+      <div class="filter-controls">
+        <label>カテゴリ <select id="cat-sel"></select></label>
+        <label><input type="checkbox" id="only-issues" /> 欠落のみ</label>
+        <input id="sample" type="number" min="0" placeholder="ランダム抽出件数" style="width:140px" />
+      </div>
+    </div>
+    <div class="audit-summary" id="summary"></div>
+    <div id="tables"></div>
+  </div>
+
+  <script src="./data/bundle.js"></script>
+  <script src="./js/audit.js"></script>
+</body>
+</html>

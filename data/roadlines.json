@@ -258,5 +258,44 @@
     "source_quote": "Venezuela uses white lines.",
     "source_url": "https://en.wikipedia.org/wiki/Road_surface_marking#The_Americas",
     "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "roadline_mexico_01",
+    "category": "roadline",
+    "answer_country": "Mexico",
+    "answer_country_ja": "メキシコ",
+    "region": "Americas",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "最も典型的なのは白の実線の外側線に1本の連続した黄色の中央線。黄色の破線1本や黄色の二重中央線もよく見られる。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/mexico",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "roadline_south-africa_01",
+    "category": "roadline",
+    "answer_country": "South Africa",
+    "answer_country_ja": "南アフリカ",
+    "region": "Africa",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "多くの道路で1本の黄色い外側線と白い中央線。外2本が実線で内側が破線の白い三重中央線や、白2本＋中央に黄1本の三重中央線という固有のものもある。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/south-africa",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "roadline_thailand_01",
+    "category": "roadline",
+    "answer_country": "Thailand",
+    "answer_country_ja": "タイ",
+    "region": "Asia",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "中央線は黄色で、実線または破線。マレーシアは中央線が白のみ。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/thailand",
+    "fetched_at": "2026-06-16"
   }
 ]

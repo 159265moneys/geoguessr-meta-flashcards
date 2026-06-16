@@ -250,5 +250,19 @@
     "source_quote": "The script is syllabic, not alphabetic, and is written from left to right.",
     "source_url": "https://en.wikipedia.org/wiki/Tamil_script",
     "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "script_japan",
+    "category": "script",
+    "answer_country": "Japan",
+    "answer_country_ja": "日本",
+    "region": "Asia",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "漢字・ひらがな・カタカナの3体系を混用。漢字は中国語由来で似るが、ひらがなは丸みやループがあり中国語にない柔らかい形、カタカナは幾何学的で外来語に使う。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/japan",
+    "fetched_at": "2026-06-16",
+    "sample_text": "ひらがな・カタカナ"
   }
 ]

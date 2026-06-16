@@ -167,5 +167,70 @@
     "source_quote": "In Groot-Brittannië en Australië heeft de linker wegwijzer een rode reflector en de rechter een witte reflector.",
     "source_url": "https://nl.wikipedia.org/wiki/Reflectorpaal",
     "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "bollard_japan_01",
+    "category": "bollard",
+    "answer_country": "Japan",
+    "answer_country_ja": "日本",
+    "region": "Asia",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "通常は白いボラードで上部に円形の反射板を持つ。黒い場合や延長部が付く場合もあり、市や県名が漢字で書かれることもある。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/japan",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "bollard_russia_01",
+    "category": "bollard",
+    "answer_country": "Russia",
+    "answer_country_ja": "ロシア",
+    "region": "Europe",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "主に3種類。棒に取り付けた非常に細いタイプ、上部が黒く下に赤い縦の反射板が付くタイプ、ドイツ式のタイプ。交差点付近では非常に多数のボラードが並ぶ。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/russia",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "bollard_mexico_01",
+    "category": "bollard",
+    "answer_country": "Mexico",
+    "answer_country_ja": "メキシコ",
+    "region": "Americas",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "黒い基部を持つ小さな円筒形の白いボラードでメキシコ固有。黄色い反射板が付くことや平たい型もある。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/mexico",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "bollard_australia_01",
+    "category": "bollard",
+    "answer_country": "Australia",
+    "answer_country_ja": "オーストラリア",
+    "region": "Oceania",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "白いボラードで前面に赤、背面に灰色の反射板。ニュージーランドは赤い反射板が背面まで回り込む点で異なる。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/australia",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "bollard_thailand_01",
+    "category": "bollard",
+    "answer_country": "Thailand",
+    "answer_country_ja": "タイ",
+    "region": "Asia",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "四角く先端がとがった形状で黒白のストライプ。東南アジアではカンボジア・ラオス・インドネシアにも見られる。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/thailand",
+    "fetched_at": "2026-06-16"
   }
 ]

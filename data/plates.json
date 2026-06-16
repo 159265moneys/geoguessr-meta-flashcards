@@ -206,5 +206,83 @@
     "source_quote": "This consists of a plate of 15.75 in × 5.12 in (400.05 mm × 130.05 mm), with a white background, the characters and frame in black and a blue band at the top that shows the name of the country, its flag and the Mercosul logo.",
     "source_url": "https://en.wikipedia.org/wiki/Vehicle_registration_plates_of_Brazil",
     "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "plate_japan",
+    "category": "plate",
+    "answer_country": "Japan",
+    "answer_country_ja": "日本",
+    "region": "Asia",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "標準は短い白地に緑文字のプレート。軽自動車には黒文字の黄色い短いプレートが使われる。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/japan",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "plate_russia",
+    "category": "plate",
+    "answer_country": "Russia",
+    "answer_country_ja": "ロシア",
+    "region": "Europe",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "全体が白地に黒文字。多くの欧州諸国と違い左側に青い帯がない。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/russia",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "plate_mexico",
+    "category": "plate",
+    "answer_country": "Mexico",
+    "answer_country_ja": "メキシコ",
+    "region": "Americas",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "短いプレートでデザインの種類が非常に多く、州ごとに固有の意匠がある。前面プレートも必須。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/mexico",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "plate_australia",
+    "category": "plate",
+    "answer_country": "Australia",
+    "answer_country_ja": "オーストラリア",
+    "region": "Oceania",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "州ごとに異なるプレート意匠が用いられ、ぼかし越しにもある程度見分けられる。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/australia",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "plate_south-africa",
+    "category": "plate",
+    "answer_country": "South Africa",
+    "answer_country_ja": "南アフリカ",
+    "region": "Africa",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "州ごとに異なるプレート意匠で、ぼかし越しにもある程度見分けられる。フリーステートは緑がかり、クワズール・ナタールは青みがかる。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/south-africa",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "plate_thailand",
+    "category": "plate",
+    "answer_country": "Thailand",
+    "answer_country_ja": "タイ",
+    "region": "Asia",
+    "image_url": "",
+    "image_local": "",
+    "meta_text": "乗用車は大きな白いプレート、商用車は黄色いプレート。東南アジアで黄色い商用プレートはタイのみ（ラオスは一般車が黄色なので注意）。",
+    "source_quote": "",
+    "source_url": "https://www.plonkit.net/thailand",
+    "fetched_at": "2026-06-16"
   }
 ]

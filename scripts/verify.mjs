@@ -19,10 +19,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const AUDIT_DIR = path.join(__dirname, '..', 'audit');
 
-const CATEGORIES = ['flag', 'bollard', 'plate', 'roadline', 'script'];
+const CATEGORIES = ['flag', 'bollard', 'plate', 'roadline', 'script', 'pole'];
 const FILES = {
   flag: 'flags.json', bollard: 'bollards.json', plate: 'plates.json',
-  roadline: 'roadlines.json', script: 'scripts.json',
+  roadline: 'roadlines.json', script: 'scripts.json', pole: 'poles.json',
 };
 const REQUIRED = ['id', 'category', 'answer_country', 'answer_country_ja', 'region', 'source_url', 'fetched_at'];
 

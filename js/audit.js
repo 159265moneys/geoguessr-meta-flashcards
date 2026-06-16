@@ -4,8 +4,8 @@
 (function () {
   'use strict';
   const DATA = window.GEOQUIZ_DATA || {};
-  const CATEGORY_LABELS = { flag: '国旗', bollard: 'ボラード', plate: 'ナンバープレート', roadline: '車線ライン', script: '文字' };
-  const ORDER = ['flag', 'bollard', 'plate', 'roadline', 'script'];
+  const CATEGORY_LABELS = { flag: '国旗', bollard: 'ボラード', plate: 'ナンバープレート', roadline: '車線ライン', script: '文字', pole: '電柱' };
+  const ORDER = ['flag', 'bollard', 'plate', 'roadline', 'script', 'pole'];
   const REQUIRED = ['id', 'category', 'answer_country', 'source_url'];
 
   // カバー範囲（ジオゲッサ/SV）

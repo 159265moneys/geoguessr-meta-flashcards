@@ -12,7 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const FILES = {
   flag: 'flags.json', bollard: 'bollards.json', plate: 'plates.json',
-  roadline: 'roadlines.json', script: 'scripts.json',
+  roadline: 'roadlines.json', script: 'scripts.json', pole: 'poles.json',
 };
 
 const out = {};

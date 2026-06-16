@@ -12,8 +12,9 @@
     plate: 'ナンバープレート',
     roadline: '車線ライン',
     script: '文字',
+    pole: '電柱',
   };
-  const CATEGORY_ORDER = ['flag', 'bollard', 'plate', 'roadline', 'script'];
+  const CATEGORY_ORDER = ['flag', 'bollard', 'plate', 'roadline', 'script', 'pole'];
 
   const PROGRESS_KEY = 'geoquiz_progress_v1';
   const SETTINGS_KEY = 'geoquiz_settings_v1';

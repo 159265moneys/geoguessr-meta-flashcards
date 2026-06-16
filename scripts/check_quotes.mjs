@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const dirArg = process.argv[2] || 'data';
 const DATA_DIR = path.isAbsolute(dirArg) ? dirArg : path.join(__dirname, '..', dirArg);
-const FILES = ['flags.json', 'plates.json', 'bollards.json', 'roadlines.json', 'scripts.json'];
+const FILES = ['flags.json', 'plates.json', 'bollards.json', 'roadlines.json', 'scripts.json', 'poles.json'];
 
 const norm = (s) => (s || '').normalize('NFC').replace(/\s+/g, ' ').trim();
 const UA = 'geoquiz-audit/1.0 (personal study tool; contact: local)';

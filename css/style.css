@@ -12,6 +12,8 @@
 }
 
 * { box-sizing: border-box; }
+/* hidden属性は常に非表示（.line-schematic等の display:flex に勝たせる） */
+[hidden] { display: none !important; }
 
 html, body {
   margin: 0;

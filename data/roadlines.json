@@ -297,5 +297,102 @@
     "source_quote": "",
     "source_url": "https://www.plonkit.net/thailand",
     "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "roadline_taiwan_lc",
+    "category": "roadline",
+    "answer_country": "Taiwan",
+    "answer_country_ja": "台湾",
+    "region": "Asia",
+    "image_url": "",
+    "image_local": "",
+    "line_spec": {
+      "outside": "red",
+      "inside": [
+        "yellow"
+      ]
+    },
+    "meta_text": "外側線が赤・中央線が黄色。赤い外側線は珍しく、台湾に特徴的な配色。",
+    "source_quote": "",
+    "source_url": "https://geohints.com/meta/lines",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "roadline_philippines_lc",
+    "category": "roadline",
+    "answer_country": "Philippines",
+    "answer_country_ja": "フィリピン",
+    "region": "Asia",
+    "image_url": "",
+    "image_local": "",
+    "line_spec": {
+      "outside": "blue",
+      "inside": [
+        "orange"
+      ]
+    },
+    "meta_text": "外側線が青・中央線が橙。フィリピンに固有の配色。",
+    "source_quote": "",
+    "source_url": "https://geohints.com/meta/lines",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "roadline_spain_lc",
+    "category": "roadline",
+    "answer_country": "Spain",
+    "answer_country_ja": "スペイン",
+    "region": "Europe",
+    "image_url": "",
+    "image_local": "",
+    "line_spec": {
+      "outside": "blue",
+      "inside": [
+        "white"
+      ]
+    },
+    "meta_text": "外側線が青・中央線が白。青い外側線はスペインの大きな特徴。",
+    "source_quote": "",
+    "source_url": "https://geohints.com/meta/lines",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "roadline_eswatini_lc",
+    "category": "roadline",
+    "answer_country": "Eswatini",
+    "answer_country_ja": "エスワティニ",
+    "region": "Africa",
+    "image_url": "",
+    "image_local": "",
+    "line_spec": {
+      "outside": "yellow",
+      "inside": [
+        "white",
+        "green"
+      ]
+    },
+    "meta_text": "外側線が黄・中央線が白と緑。エスワティニ固有の配色。",
+    "source_quote": "",
+    "source_url": "https://geohints.com/meta/lines",
+    "fetched_at": "2026-06-16"
+  },
+  {
+    "id": "roadline_netherlands_lc",
+    "category": "roadline",
+    "answer_country": "Netherlands",
+    "answer_country_ja": "オランダ",
+    "region": "Europe",
+    "image_url": "",
+    "image_local": "",
+    "line_spec": {
+      "outside": "white",
+      "inside": [
+        "white",
+        "green"
+      ]
+    },
+    "meta_text": "外側線が白・中央線が白と緑（緑の破線）。緑の中央線はオランダに固有。",
+    "source_quote": "",
+    "source_url": "https://geohints.com/meta/lines",
+    "fetched_at": "2026-06-16"
   }
 ]

@@ -94,7 +94,7 @@
   // ---- 出題プール ----
   // 出題可能 = 視覚情報（画像 or サンプル文字）があるカードのみ。
   // 画像もサンプルも無いカードは監査用にデータには残るが、クイズには出さない。
-  function isQuizzable(c) { return !!(c.image_url || c.image_local || c.sample_text); }
+  function isQuizzable(c) { return !!(c.image_url || c.image_local || c.sample_text || c.line_spec); }
 
   function activePool() {
     let pool = allCards.filter(isQuizzable);
@@ -166,6 +166,7 @@
     imageWrap: $('q-image-wrap'),
     image: $('q-image'),
     sample: $('q-sample'),
+    lines: $('q-lines'),
     choices: $('choices'),
     feedback: $('feedback'),
     fbResult: $('fb-result'),
@@ -222,6 +223,23 @@
     els.empty.hidden = false;
   }
 
+  // 車線の配色スキーマ図（上から見た道路：外側線＋中央線を指定色で描画）
+  const LINE_COLORS = { white: '#f2f2f2', yellow: '#f4c80a', orange: '#ff8c1a', blue: '#1f6fe0', green: '#27b04a', red: '#e8392c' };
+  function renderLineSVG(spec) {
+    const out = LINE_COLORS[spec.outside] || '#f2f2f2';
+    const ins = (Array.isArray(spec.inside) ? spec.inside : [spec.inside]).map((x) => LINE_COLORS[x] || '#f2f2f2');
+    const center = ins.length <= 1
+      ? `<line x1="120" y1="0" x2="120" y2="200" stroke="${ins[0] || '#f2f2f2'}" stroke-width="8" stroke-dasharray="22 16"/>`
+      : `<line x1="112" y1="0" x2="112" y2="200" stroke="${ins[0]}" stroke-width="6" stroke-dasharray="22 16"/>`
+        + `<line x1="128" y1="0" x2="128" y2="200" stroke="${ins[1]}" stroke-width="6" stroke-dasharray="22 16"/>`;
+    return `<svg viewBox="0 0 240 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">`
+      + `<rect x="0" y="0" width="240" height="200" fill="#0b0f14"/>`
+      + `<rect x="44" y="0" width="152" height="200" fill="#3b4046"/>`
+      + `<line x1="58" y1="0" x2="58" y2="200" stroke="${out}" stroke-width="8"/>`
+      + `<line x1="182" y1="0" x2="182" y2="200" stroke="${out}" stroke-width="8"/>`
+      + center + `</svg>`;
+  }
+
   function renderCard(card) {
     current = card;
     answered = false;
@@ -232,6 +250,7 @@
     els.qCat.textContent = CATEGORY_LABELS[card.category] || card.category;
 
     els.imageWrap.classList.remove('broken');
+    if (els.lines) els.lines.hidden = true;
     const imgSrc = card.image_local || card.image_url || '';
     if (imgSrc) {
       // 画像カード
@@ -246,6 +265,13 @@
       els.image.removeAttribute('src');
       els.sample.hidden = false;
       els.sample.textContent = card.sample_text;
+    } else if (card.line_spec && els.lines) {
+      // 車線の配色スキーマ図（SVG生成）
+      els.image.style.display = 'none';
+      els.image.removeAttribute('src');
+      els.sample.hidden = true;
+      els.lines.hidden = false;
+      els.lines.innerHTML = renderLineSVG(card.line_spec);
     } else {
       els.image.style.display = 'none';
       els.sample.hidden = true;

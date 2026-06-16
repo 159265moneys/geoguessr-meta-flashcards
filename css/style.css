@@ -130,6 +130,15 @@ main { padding: 16px 14px 40px; max-width: 720px; margin: 0 auto; }
   word-break: break-word;
   font-family: "Hiragino Sans", "Noto Sans", "Noto Sans JP", system-ui, sans-serif;
 }
+.line-schematic {
+  width: 100%;
+  height: 46vh;
+  max-height: 46vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.line-schematic svg { width: auto; height: 100%; max-width: 100%; }
 .image-wrap.broken::after {
   content: "画像を読み込めませんでした（出典リンクで確認してください）";
   color: var(--muted);
